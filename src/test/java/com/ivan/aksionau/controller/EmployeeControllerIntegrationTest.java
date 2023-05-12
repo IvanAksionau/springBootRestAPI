@@ -1,24 +1,11 @@
 package com.ivan.aksionau.controller;
 
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-@SpringBootTest(classes = EmployeeControllerIntegrationTest.class)
-public class EmployeeControllerIntegrationTest {
-
-    @Value("${app.url}")
-    private String appUrl;
-
-    @BeforeTestClass
-    public void setUp() {
-        RestAssured.baseURI = appUrl;
-    }
+public class EmployeeControllerIntegrationTest extends BaseTest {
 
     @Test
     public void testGetEmployee() {
