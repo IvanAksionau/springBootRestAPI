@@ -1,4 +1,4 @@
-package com.ivan.aksionau.springBootRestAPI;
+package com.ivan.aksionau.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
