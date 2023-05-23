@@ -1,25 +1,41 @@
 package com.ivan.aksionau.springBootRestAPI.controller;
 
-import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class EmployeeController {
 
-    @RequestMapping("/employee")
-    public Employee getEmployee() {
-        return Employee.builder()
-                .id(1)
-                .name("Ivan Aksionau")
-                .email("ivan.aksionau@gmail.com")
-                .phone(243242343)
-                .address(Address.builder()
-                        .street("123 Main St")
-                        .city("New York")
-                        .country("USA")
-                        .build())
-                .build();
+    @Autowired
+    EmployeeService employeeService;
+
+    @GetMapping("/employees")
+    public List<Employee> getEmployeeList() {
+        return employeeService.getEmployeesList();
+    }
+
+    @GetMapping("/employee/{id}")
+    public Employee getEmployeeById(@PathVariable int id) {
+        return employeeService.getEmployeeById(id);
+    }
+
+    @PostMapping("/employee")
+    public Employee addEmployee(@RequestBody Employee employee) {
+        return employeeService.addEmployee(employee);
+    }
+
+    @PutMapping("/employee/{id}")
+    public Employee updateEmployee(@RequestBody Employee employee, @PathVariable int id) {
+        return employeeService.updateEmployee(id, employee);
+    }
+
+    @DeleteMapping("/employee/{id}")
+    public ArrayList<Employee> deleteEmployee(@PathVariable int id) {
+        return employeeService.deleteEmployee(id);
     }
 }
