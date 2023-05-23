@@ -11,7 +11,7 @@ public class EmployeeControllerIntegrationTest extends BaseTest {
     public void testGetEmployee() {
         given()
                 .when()
-                .get("/employee")
+                .get("/employees")
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(1))
