@@ -1,4 +1,4 @@
-package com.ivan.aksionau.controller;
+package com.ivan.aksionau.test;
 
 import io.restassured.RestAssured;
 import org.springframework.beans.factory.annotation.Value;

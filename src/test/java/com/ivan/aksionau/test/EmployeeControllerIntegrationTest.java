@@ -1,4 +1,4 @@
-package com.ivan.aksionau.controller;
+package com.ivan.aksionau.test;
 
 import org.junit.jupiter.api.Test;
 
