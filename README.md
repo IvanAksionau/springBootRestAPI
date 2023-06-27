@@ -9,4 +9,4 @@
 
 ### Error handling (Web application could not be started as there.....server.ServletWebServerFactory bean defined in the context.)
 *  mvn dependency:purge-local-repository -DreResolve=true
-* mvn package
+* mvn package -DskipTests

@@ -1,14 +1,20 @@
 package com.ivan.aksionau.test;
 
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasItems;
 
-public class ResAssuredTest extends BaseResAssuredTest {
+/**
+ * <p>
+ * This class is used to test the EmployeeController class using RestAssured.
+ * <p>
+ * This test will automatically start the application on a random port and
+ * send the request to the controller but use separate 'uri' setup.
+ */
+public class BaseUriTest extends BaseTest {
 
     @Test
     public void testGetEmployee() {
@@ -29,7 +35,7 @@ public class ResAssuredTest extends BaseResAssuredTest {
                 .name("Ivan")
                 .build();
 
-        Employee employee =  given().baseUri(baseUrl).port(Integer.parseInt(port))
+        Employee employee = given().baseUri(baseUrl).port(Integer.parseInt(port))
                 .when()
                 .basePath("/employee")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
