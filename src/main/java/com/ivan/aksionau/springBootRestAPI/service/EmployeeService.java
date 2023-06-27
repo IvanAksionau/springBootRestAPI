@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    private static ArrayList<Employee> employeesList = new ArrayList<>(Arrays.asList(
+    private static final ArrayList<Employee> employeesList = new ArrayList<>(Arrays.asList(
             Employee.builder()
                     .id(1)
                     .name("Ivan Aksionau")
