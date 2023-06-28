@@ -1,5 +1,6 @@
 package com.ivan.aksionau.test;
 
+import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import static org.hamcrest.Matchers.hasItems;
 
 /**
  * <p>
- * This class is used to test the EmployeeController class using RestAssured.
+ * This class is used to test {@link EmployeeController} class using RestAssured.
  * <p>
  * This test will automatically start the application on a random port and
  * send the request to the controller.

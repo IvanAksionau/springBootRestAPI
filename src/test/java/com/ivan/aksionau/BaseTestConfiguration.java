@@ -1,23 +1,23 @@
 package com.ivan.aksionau;
 
-import com.ivan.aksionau.utils.JsonReader;
+import com.ivan.aksionau.utils.JsonTestDataManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Pay attention that bean defined into the class
- * should have the same name as bean defined in BaseTestConfiguration class:
+ * Pay attention that bean defined into the {@link BaseTestConfiguration} class
+ * should have the similar name definition like below:
  *
  * @Autowired
- * private JsonReader reader;
+ * private JsonTestDataManager manager;
  */
 @Configuration
 @ComponentScan
 public class BaseTestConfiguration {
 
     @Bean
-    public JsonReader reader() {
-        return new JsonReader();
+    public JsonTestDataManager manager() {
+        return new JsonTestDataManager();
     }
 }

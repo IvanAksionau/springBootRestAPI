@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class JsonReader {
+public class JsonTestDataManager {
 
     @Value("${employee.list.file.path}")
     private String employeeListFilePath;

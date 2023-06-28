@@ -5,7 +5,7 @@ import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
-import com.ivan.aksionau.utils.JsonReader;
+import com.ivan.aksionau.utils.JsonTestDataManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -25,7 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * This class mocks the EmployeeController controller.
  * <p>
  * This test will not actually test the application, but will only test the one selected controller.
- * It will not start the embedded tomcat server itself, it will test the @EmployeeController class in isolation.
+ * It will not start the embedded tomcat server itself,
+ * it will test the {@link EmployeeController} class in isolation.
  */
 @WebMvcTest(EmployeeController.class)
 @ContextConfiguration(classes = {EmployeeController.class, BaseTestConfiguration.class})
@@ -36,7 +37,7 @@ public class MockMvcSpringBootTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private JsonReader reader;
+    private JsonTestDataManager manager;
 
     @MockBean
     private EmployeeService employeeService;
@@ -83,7 +84,7 @@ public class MockMvcSpringBootTest {
     @Test
     public void testGetEmployees() throws Exception {
         // Arrange
-        List<Employee> employees = reader.readEmployeeListFile();
+        List<Employee> employees = manager.readEmployeeListFile();
 
         // Act
         when(employeeService.getEmployeesList()).thenReturn(employees);
