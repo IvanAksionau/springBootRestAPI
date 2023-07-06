@@ -1,0 +1,7 @@
+com/ivan/aksionau/utils/JsonTestDataManager.class
+com/ivan/aksionau/BaseTestConfiguration.class
+com/ivan/aksionau/utils/JsonTestDataManager$1.class
+com/ivan/aksionau/test/EmployeeControllerIntegrationTest.class
+com/ivan/aksionau/test/BaseUriTest.class
+com/ivan/aksionau/test/MockMvcSpringBootTest.class
+com/ivan/aksionau/test/BaseTest.class
