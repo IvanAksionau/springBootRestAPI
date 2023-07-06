@@ -1,5 +1,7 @@
 # Simple example of Spring Boot based REST API application.
 
+[![Java CI with Maven](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml/badge.svg)](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml)
+
 ### APP preconditions
 * start app by running SpringBootRestApiApplication class
 * access APP on http://localhost:8080/
