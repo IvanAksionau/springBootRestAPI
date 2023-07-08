@@ -2,6 +2,7 @@ package com.ivan.aksionau.test;
 
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import static io.restassured.RestAssured.given;
@@ -22,7 +23,7 @@ public class BaseUriTest extends BaseTest {
                 .when()
                 .get("/employees")
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.OK.value())
                 .body("id", hasItems(1, 1))
                 .body("name", hasItems("Ivan Aksionau", "Ivan Aksionau"));
     }

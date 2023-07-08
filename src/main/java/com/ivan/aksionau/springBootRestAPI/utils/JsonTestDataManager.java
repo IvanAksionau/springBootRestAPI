@@ -1,12 +1,12 @@
-package com.ivan.aksionau.utils;
+package com.ivan.aksionau.springBootRestAPI.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -20,14 +20,19 @@ public class JsonTestDataManager {
     @Value("${newEmployee.list.file.path}")
     private String newEmployeeListFilePath;
 
+    @Autowired
     private ObjectMapper mapper;
 
-    @PostConstruct
-    private void initialize() {
-        mapper = new ObjectMapper();
+    private List<Employee> employeeList;
+
+    public List<Employee> getEmployeeList() {
+        if (employeeList == null) {
+            employeeList = readEmployeeListFile();
+        }
+        return employeeList;
     }
 
-    public List<Employee> readEmployeeListFile() {
+    private List<Employee> readEmployeeListFile() {
         List<Employee> employeeList = null;
 
         try {

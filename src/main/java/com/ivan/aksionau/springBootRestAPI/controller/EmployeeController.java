@@ -3,10 +3,11 @@ package com.ivan.aksionau.springBootRestAPI.controller;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 //@RequestMapping("/")
@@ -18,6 +19,11 @@ public class EmployeeController {
     @GetMapping("/employees")
     public List<Employee> getEmployeeList() {
         return employeeService.getEmployeesList();
+    }
+
+    @GetMapping("/employeesQueried")
+    public List<Employee> getEmployeeListByParameters(@Validated @RequestParam Map<String, String> queryParameters) {
+        return employeeService.getEmployeesListByKeys(queryParameters);
     }
 
     @GetMapping("/employee/{id}")
@@ -36,7 +42,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employee/{id}")
-    public ArrayList<Employee> deleteEmployee(@PathVariable int id) {
+    public List<Employee> deleteEmployee(@PathVariable int id) {
         return employeeService.deleteEmployee(id);
     }
 }

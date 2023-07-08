@@ -5,7 +5,7 @@ import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
-import com.ivan.aksionau.utils.JsonTestDataManager;
+import com.ivan.aksionau.springBootRestAPI.utils.JsonTestDataManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -84,7 +84,7 @@ public class MockMvcSpringBootTest {
     @Test
     public void testGetEmployees() throws Exception {
         // Arrange
-        List<Employee> employees = manager.readEmployeeListFile();
+        List<Employee> employees = manager.getEmployeeList();
 
         // Act
         when(employeeService.getEmployeesList()).thenReturn(employees);
