@@ -1,8 +1,14 @@
-com/ivan/aksionau/springBootRestAPI/model/Address$AddressBuilder.class
-com/ivan/aksionau/springBootRestAPI/SpringBootRestApiApplication.class
-com/ivan/aksionau/springBootRestAPI/model/Address.class
+com/ivan/aksionau/springBootRestAPI/utils/JsonTestDataManager$1.class
 com/ivan/aksionau/springBootRestAPI/BaseConfiguration.class
 com/ivan/aksionau/springBootRestAPI/model/Employee$EmployeeBuilder.class
 com/ivan/aksionau/springBootRestAPI/service/EmployeeService.class
+com/ivan/aksionau/springBootRestAPI/model/Address$AddressBuilder.class
+com/ivan/aksionau/springBootRestAPI/validation/EmployeeQueryParametersValidator.class
+com/ivan/aksionau/springBootRestAPI/validation/AllowedKey.class
+com/ivan/aksionau/springBootRestAPI/SpringBootRestApiApplication.class
+com/ivan/aksionau/springBootRestAPI/model/Address.class
+com/ivan/aksionau/springBootRestAPI/utils/JsonTestDataManager.class
+com/ivan/aksionau/springBootRestAPI/service/EmployeeService$1.class
 com/ivan/aksionau/springBootRestAPI/model/Employee.class
 com/ivan/aksionau/springBootRestAPI/controller/EmployeeController.class
+com/ivan/aksionau/springBootRestAPI/validation/ValidationConfig.class
