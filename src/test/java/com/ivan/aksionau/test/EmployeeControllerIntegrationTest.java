@@ -1,10 +1,15 @@
 package com.ivan.aksionau.test;
 
 import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
+import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,8 +59,12 @@ public class EmployeeControllerIntegrationTest extends BaseTest {
 
     @Test
     public void testGetEmployeeListByParameters() {
-        Employee[] employee = given()
-                .queryParam("nam5e", "Ivan Aksionau")
+        //arrange
+        List<Employee> employeeExpectedList = manager.getEmployeeList();
+
+        //act
+        Employee[] employees = given()
+                .queryParam("name", "Ivan Aksionau")
                 .queryParam("email", "john.doe@example.com")
                 .when()
                 .get("/employeesQueried")
@@ -63,7 +72,30 @@ public class EmployeeControllerIntegrationTest extends BaseTest {
                 .statusCode(HttpStatus.OK.value())
                 .extract().as(Employee[].class);
 
-        System.out.println(employee[0].toString());
-//        assertThat(employee.getId(), equalTo(1));
+        //assert
+        assertThat(Lists.newArrayList(employees), equalTo(employeeExpectedList));
+    }
+
+    @Test
+    public void testUpdateEmployee() {
+        //arrange
+        Employee updatedEmployee = Employee.builder()
+                .id(1)
+                .name("Ivan Aksionau")
+                .email("ivan.aksionau@gmail.com")
+                .address(new Address("333 Main St", "London", "EU")).build();
+        //act
+        Employee employee = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .with().pathParam("id", 1)
+                .body(updatedEmployee)
+                .when()
+                .put("/employee/{id}")
+                .then()
+                .statusCode(HttpStatus.OK.value())
+                .extract().as(Employee.class);
+
+        //assert
+        assertThat(employee, equalTo(updatedEmployee));
     }
 }

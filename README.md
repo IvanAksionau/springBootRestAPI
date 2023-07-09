@@ -18,3 +18,4 @@
 
 ### Useful links:
 - Testing the Web Layer with Spring https://spring.io/guides/gs/testing-web/
+- Hamcrest tutorial https://www.vogella.com/tutorials/Hamcrest/article.html
