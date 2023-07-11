@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class JsonTestDataManager {
+public class JsonDataManager {
 
     @Value("${employee.list.file.path}")
     private String employeeListFilePath;
@@ -26,7 +26,7 @@ public class JsonTestDataManager {
     private List<Employee> employeeList;
 
     public List<Employee> getEmployeeList() {
-        if (employeeList == null) {
+        if (employeeList == null || employeeList.isEmpty()){
             employeeList = readEmployeeListFile();
         }
         return employeeList;

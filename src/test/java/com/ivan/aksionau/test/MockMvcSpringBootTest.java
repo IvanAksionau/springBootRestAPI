@@ -1,11 +1,12 @@
 package com.ivan.aksionau.test;
 
-import com.ivan.aksionau.BaseTestConfiguration;
+import com.ivan.aksionau.springBootRestAPI.BaseConfiguration;
 import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
-import com.ivan.aksionau.springBootRestAPI.utils.JsonTestDataManager;
+import com.ivan.aksionau.springBootRestAPI.utils.JsonDataManager;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -29,18 +30,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * it will test the {@link EmployeeController} class in isolation.
  */
 @WebMvcTest(EmployeeController.class)
-@ContextConfiguration(classes = {EmployeeController.class, BaseTestConfiguration.class})
-//@Import(BaseTestConfiguration.class)
+@ContextConfiguration(classes = {EmployeeController.class, BaseConfiguration.class})
 public class MockMvcSpringBootTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private JsonTestDataManager manager;
+    private JsonDataManager manager;
 
     @MockBean
     private EmployeeService employeeService;
+
+    @AfterEach
+    public void clearTestData() {
+        manager.getEmployeeList().clear();
+    }
 
     @Test
     public void testGetEmployeeByID() throws Exception {

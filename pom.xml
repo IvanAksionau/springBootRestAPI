@@ -18,6 +18,7 @@
         <lombok.version>1.18.26</lombok.version>
         <rest-assured.version>5.3.0</rest-assured.version>
         <cucumber-java.version>7.12.1</cucumber-java.version>
+        <cucumber-spring.version>7.12.1</cucumber-spring.version>
     </properties>
     <dependencies>
         <dependency>
@@ -75,6 +76,17 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber-java.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber-spring.version}</version>
         </dependency>
     </dependencies>
 

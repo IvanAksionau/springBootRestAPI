@@ -1,11 +1,12 @@
 package com.ivan.aksionau.test;
 
 import com.ivan.aksionau.springBootRestAPI.BaseConfiguration;
-import com.ivan.aksionau.springBootRestAPI.utils.JsonTestDataManager;
+import com.ivan.aksionau.springBootRestAPI.utils.JsonDataManager;
 import io.restassured.RestAssured;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +29,7 @@ public class BaseTest {
     protected String port;
 
     @Autowired
-    protected JsonTestDataManager manager;
+    protected JsonDataManager manager;
 
     protected SoftAssertions softly = new SoftAssertions();
 
@@ -42,5 +43,10 @@ public class BaseTest {
     protected final void softAssert(Supplier<? extends AbstractAssert<?, ?>>... assertionConsumer) {
         Arrays.stream(assertionConsumer).forEach(Supplier::get);
         softly.assertAll();
+    }
+
+    @AfterEach
+    public void clearTestData() {
+        manager.getEmployeeList().clear();
     }
 }

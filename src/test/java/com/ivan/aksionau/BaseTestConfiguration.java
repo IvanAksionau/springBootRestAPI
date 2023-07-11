@@ -1,7 +1,5 @@
 package com.ivan.aksionau;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +13,4 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class BaseTestConfiguration {
 
-    @Bean
-    public ObjectMapper mapper() {
-        return new ObjectMapper();
-    }
 }

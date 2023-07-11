@@ -3,7 +3,7 @@ package com.ivan.aksionau.springBootRestAPI.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
-import com.ivan.aksionau.springBootRestAPI.utils.JsonTestDataManager;
+import com.ivan.aksionau.springBootRestAPI.utils.JsonDataManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class EmployeeService {
 
     @Autowired
-    private JsonTestDataManager manager;
+    private JsonDataManager manager;
 
     private Map<String, Object> convertObjectToMap(Employee employee) {
         ObjectMapper objectMapper = new ObjectMapper();
