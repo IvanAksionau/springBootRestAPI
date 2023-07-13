@@ -17,6 +17,7 @@
 
 
 ### Useful links:
+- Lombok https://www.toptal.com/java/write-fat-free-java-code-project-lombok
 - Testing the Web Layer with Spring https://spring.io/guides/gs/testing-web/
 - Hamcrest tutorial https://www.vogella.com/tutorials/Hamcrest/article.html
 - Cucumber with Spring https://thepracticaldeveloper.com/cucumber-tests-spring-boot-dependency-injection/

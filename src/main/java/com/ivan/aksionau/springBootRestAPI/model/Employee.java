@@ -2,13 +2,16 @@ package com.ivan.aksionau.springBootRestAPI.model;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+//@Setter(AccessLevel.PROTECTED)
+@ToString(exclude = {"address"})
 @EqualsAndHashCode
 public class Employee {
-    private int id;
+    private @NonNull int id;
     private String name;
     private Address address;
     private String email;
