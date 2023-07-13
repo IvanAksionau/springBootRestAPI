@@ -28,7 +28,7 @@ public class GetPostSteps {
         response = extension.get("/employees");
     }
 
-    @Then("I check the user id is \\d* and name is \"([^\"]*)\"$")
+    @Then("^I check the user id and name with id (\\d+) and name \"([^\"]*)\"$")
     public void i_check_the_user_id_and_name(int id, String name) {
         ArrayList<Employee> employees = Lists.newArrayList(response.body().as(Employee[].class));
         softly.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
