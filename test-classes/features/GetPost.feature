@@ -3,4 +3,4 @@ Feature:
 
     Scenario: Verify
       Given I get the list of employees
-      Then I check the user id is 1 and name is "name"
+      Then I check the user id and name with id 1 and name "Ivan Aksionau"
