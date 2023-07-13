@@ -11,13 +11,9 @@
 * Any class extending BaseTest class can be executed without APP preconditions
 
 
-### Error handling (Web application could not be started as there.....server.ServletWebServerFactory bean defined in the context.)
-* mvn dependency:purge-local-repository -DreResolve=true
-* mvn package -DskipTests
-
-
 ### Useful links:
 - Lombok https://www.toptal.com/java/write-fat-free-java-code-project-lombok
 - Testing the Web Layer with Spring https://spring.io/guides/gs/testing-web/
 - Hamcrest tutorial https://www.vogella.com/tutorials/Hamcrest/article.html
+- Cucumber docs https://cucumber.io/docs/cucumber/
 - Cucumber with Spring https://thepracticaldeveloper.com/cucumber-tests-spring-boot-dependency-injection/
