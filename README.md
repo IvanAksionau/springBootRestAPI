@@ -2,6 +2,8 @@
 
 [![CI build state](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml/badge.svg)](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml)
 
+[![img_4.png](img_4.png)](https://ivanaksionau.github.io/springBootRestAPI/overview-features.html)
+
 ### APP preconditions
 * Start app by running SpringBootRestApiApplication class
 * Access APP on http://localhost:8080/
