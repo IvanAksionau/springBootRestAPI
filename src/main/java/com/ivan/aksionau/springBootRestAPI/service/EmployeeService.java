@@ -41,7 +41,7 @@ public class EmployeeService {
             if (isValidEmployeeAttribute(key)) {
                 List<Employee> matchingEmployees = manager.getEmployeeList().stream()
                         .filter(emp -> matchesAttribute(emp, entry.getKey(), value))
-                        .collect(Collectors.toList());
+                        .toList();
 
                 employeeList.addAll(matchingEmployees);
             }
