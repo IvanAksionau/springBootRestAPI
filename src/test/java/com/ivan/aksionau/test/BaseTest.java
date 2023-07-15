@@ -47,6 +47,6 @@ public class BaseTest {
 
     @AfterEach
     public void clearTestData() {
-        manager.getEmployeeList().clear();
+        manager.clearEmployeeList();
     }
 }

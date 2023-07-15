@@ -1,5 +1,6 @@
-package com.ivan.aksionau.utils;
+package com.ivan.aksionau.utils.client;
 
+import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
@@ -11,15 +12,13 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Map;
 
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 @Component
 @Scope(SCOPE_CUCUMBER_GLUE)
-public class RestAssuredExtension {
+public class RestAssuredClient {
 
     private RequestSpecification spec;
 
@@ -41,18 +40,21 @@ public class RestAssuredExtension {
 
     public Response getWithPathParameters(String url, Map<String, String> parameters) {
         spec.pathParams(parameters);
-        try {
-            return spec.get(new URI(url));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        return get(url);
     }
 
     public Response get(String url) {
-        try {
-            return spec.get(new URI(url));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        return spec.get(url);
+    }
+
+    public Response put(String url, Map<String, String> parameters, Employee employee) {
+        spec.pathParams(parameters);
+        spec.body(employee);
+        return spec.put(url);
+    }
+
+    public Response post(String url, Employee employee) {
+        spec.body(employee);
+        return spec.post(url);
     }
 }
