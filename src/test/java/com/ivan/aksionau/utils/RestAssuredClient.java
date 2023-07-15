@@ -1,4 +1,4 @@
-package com.ivan.aksionau.utils.client;
+package com.ivan.aksionau.utils;
 
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import io.restassured.RestAssured;

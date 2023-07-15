@@ -2,7 +2,7 @@ package com.ivan.aksionau.steps;
 
 import com.ivan.aksionau.BaseTestConfiguration;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
-import com.ivan.aksionau.utils.client.RestAssuredClient;
+import com.ivan.aksionau.utils.RestAssuredClient;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
