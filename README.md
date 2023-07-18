@@ -5,12 +5,17 @@
 [![img_4.png](img_4.png)](https://ivanaksionau.github.io/springBootRestAPI/overview-features.html)
 
 ### APP preconditions
-* Start app by running SpringBootRestApiApplication class
+* Start app by running SpringBootRestApiApplication class.
 * Access APP on http://localhost:8080/
 
 
 ### Tests preconditions
-* Any class extending BaseTest class can be executed without APP preconditions
+* Any class extending BaseTest class can be executed without APP preconditions.
+
+### Allure report installation:
+* https://github.com/ScoopInstaller/Install#for-admin ('.\install.ps1 -RunAsAdmin' in my case works)
+* https://docs.qameta.io/allure/
+- to start allure run 'allure serve target/allure-results/' from project root folder.
 
 
 ### Useful links:
