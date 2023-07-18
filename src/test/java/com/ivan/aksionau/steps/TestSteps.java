@@ -5,6 +5,7 @@ import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.utils.RestAssuredClient;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.SoftAssertions;
@@ -36,11 +37,13 @@ public class TestSteps {
     }
 
     @When("I get the list of employees")
+    @Step("I get the list of employees")
     public void i_get_the_list_of_employees() {
         response = restAssuredClient.get("/employees");
     }
 
     @Then("^I check the employee id and name with id (\\d+) and name \"([^\"]*)\"$")
+    @Step("I check the employee id and name with id **** and name ****")
     public void i_check_the_employee_id_and_name(int id, String name) {
         ArrayList<Employee> employees = Lists.newArrayList(response.body().as(Employee[].class));
         softAssert(
@@ -50,6 +53,7 @@ public class TestSteps {
     }
 
     @When("I update the employee by id {int}")
+    @Step("I update the employee by id")
     public void i_update_the_employee_by_id(int id, Employee employee) {
         HashMap<String, String> parameters = new HashMap<>();
         parameters.put("id", String.valueOf(id));
@@ -57,16 +61,17 @@ public class TestSteps {
     }
 
     @When("I add new employee")
+    @Step("I add new employee")
     public void i_add_new_employee(Employee employee) {
         response = restAssuredClient.post("/employee", employee);
     }
 
     @Then("I check the employee exists")
+    @Step("I check the employee exists")
     public void i_check_the_employee_exists(Employee employee) {
         HashMap<String, String> parameters = new HashMap<>();
         parameters.put("id", String.valueOf(employee.getId()));
         response = restAssuredClient.getWithPathParameters("/employee/{id}", parameters);
         assertThat(response.body().as(Employee.class), equalTo(employee));
     }
-
 }

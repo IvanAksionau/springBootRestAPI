@@ -35,7 +35,8 @@ public class RestAssuredClient {
         builder.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         RequestSpecification requestSpecification = builder.build();
-        spec = RestAssured.given().spec(requestSpecification);
+//        spec = RestAssured.given().spec(requestSpecification);
+        spec = RestAssured.given().log().all().spec(requestSpecification);
     }
 
     public Response getWithPathParameters(String url, Map<String, String> parameters) {
