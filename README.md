@@ -1,4 +1,4 @@
-# Example of Spring Boot based REST API application.
+# Spring Boot based REST API test framework.
 
 [![CI build state](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml/badge.svg)](https://github.com/IvanAksionau/springBootRestAPI/actions/workflows/ci_settings.yml)
 
