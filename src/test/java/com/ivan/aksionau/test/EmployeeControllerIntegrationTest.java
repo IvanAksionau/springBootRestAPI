@@ -3,7 +3,6 @@ package com.ivan.aksionau.test;
 import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
-import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,6 @@ import static org.hamcrest.Matchers.hasItems;
  * This test will automatically start the application on a random port and
  * send the request to the controller.
  */
-@Slf4j
 public class EmployeeControllerIntegrationTest extends BaseTest {
 
     @Test
