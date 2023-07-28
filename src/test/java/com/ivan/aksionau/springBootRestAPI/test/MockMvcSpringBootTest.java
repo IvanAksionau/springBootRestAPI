@@ -1,19 +1,25 @@
-package com.ivan.aksionau.test;
+package com.ivan.aksionau.springBootRestAPI.test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivan.aksionau.springBootRestAPI.BaseConfiguration;
+import com.ivan.aksionau.springBootRestAPI.bootstrap.DataInitializer;
 import com.ivan.aksionau.springBootRestAPI.controller.EmployeeController;
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
+import com.ivan.aksionau.springBootRestAPI.repositories.EmployeeRepository;
 import com.ivan.aksionau.springBootRestAPI.service.EmployeeService;
-import com.ivan.aksionau.springBootRestAPI.service.EmployeeServiceImpl;
-import com.ivan.aksionau.springBootRestAPI.utils.JsonDataManager;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
@@ -30,29 +36,36 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * It will not start the embedded tomcat server itself,
  * it will test the {@link EmployeeController} class in isolation.
  */
-@WebMvcTest(EmployeeController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 @ContextConfiguration(classes = {EmployeeController.class, BaseConfiguration.class})
 public class MockMvcSpringBootTest {
+
+    @Autowired
+    private ApplicationContext context;
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private JsonDataManager manager;
+    private EmployeeRepository employeeRepository;
 
     @MockBean
     private EmployeeService employeeService;
 
-    @AfterEach
-    public void clearTestData() {
-        manager.getEmployeeList().clear();
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @BeforeEach
+    public void initTestData() {
+        context.getBean(DataInitializer.class).initEmployeeTestData();
     }
 
     @Test
     public void testGetEmployeeByID() throws Exception {
         // Arrange
         var employee = Employee.builder()
-                .id(1)
+                .id(1L)
                 .email("karthik@test.com")
                 .name("Karthik")
                 .phone(23423423)
@@ -60,18 +73,24 @@ public class MockMvcSpringBootTest {
                 .build();
 
         // Act
-        when(employeeService.getEmployeeById(1)).thenReturn(employee);
+        when(employeeService.getEmployeeById(1L)).thenReturn(employee);
 
         // Assertion
-        this.mockMvc.perform(get("/employee/1"))
+        ResultActions resultActions = this.mockMvc.perform(get("/employee/1"))
                 .andExpect(status().isOk());
+
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+
+        Employee response = objectMapper.readValue(contentAsString, Employee.class);
+        assert response.equals(employee);
     }
 
     @Test
     public void testGetEmployee() throws Exception {
         // Arrange
         var employee = Employee.builder()
-                .id(1)
+                .id(1L)
                 .email("karthik@test.com")
                 .name("Karthik")
                 .phone(23423423)
@@ -79,7 +98,7 @@ public class MockMvcSpringBootTest {
                 .build();
 
         // Act
-        when(employeeService.getEmployeeById(1)).thenReturn(employee);
+        when(employeeService.getEmployeeById(1L)).thenReturn(employee);
 
         // Assertion
         this.mockMvc.perform(get("/employee/1"))
@@ -90,14 +109,14 @@ public class MockMvcSpringBootTest {
     @Test
     public void testGetEmployees() throws Exception {
         // Arrange
-        List<Employee> employees = manager.getEmployeeList();
+        List<Employee> employees = employeeRepository.findAll();
 
         // Act
         when(employeeService.getEmployeesList()).thenReturn(employees);
 
         // Assertion
         var result = this.mockMvc.perform(get("/employees"))
-                .andExpect(jsonPath("$[0].name").value("Ivan Aksionau"))
+                .andExpect(jsonPath("$[0].name").value("Ivan"))
                 .andExpect(jsonPath("$[0].address.city").value("New York"))
                 .andExpect(jsonPath("$[1].name").value("John Doe"))
                 .andExpect(jsonPath("$[1].address.city").value("Los Angeles"))

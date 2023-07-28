@@ -1,4 +1,4 @@
-package com.ivan.aksionau.steps;
+package com.ivan.aksionau.springBootRestAPI.steps;
 
 import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
@@ -11,9 +11,9 @@ public class DataTableDefinition {
     @DataTableType(replaceWithEmptyString = "[anonymous]")
     public Employee employeeEntryTransformer(Map<String, String> row) {
         return new Employee(
-                Integer.parseInt(row.get("id")),
+                null,
                 row.get("name"),
-                new Address(
+                new Address(null,
                         row.get("address.street"),
                         row.get("address.city"),
                         row.get("address.country")),
