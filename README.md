@@ -6,7 +6,7 @@
 
 ### APP start
 - To start APP based on embedded h2 database storage run command ```mvn spring-boot:run```
-- To start APP based on MySQL storage run command ```mvn spring-boot:run -Dspring.profiles.active=local```
+- To start APP based on MySQL storage run command ```mvn spring-boot:run -D"spring-boot.run.profiles=local"```
 * Access APP on http://localhost:8080/
 
 ### Tests start
