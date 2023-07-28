@@ -1,4 +1,4 @@
-package com.ivan.aksionau.runners;
+package com.ivan.aksionau.springBootRestAPI.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,6 +13,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         plugin = {"json:target/cucumber.json", "pretty"},
-        glue = "com/ivan/aksionau/steps")
+        glue = "com/ivan/aksionau/springBootRestAPI/steps")
 public class TestRunner {
 }

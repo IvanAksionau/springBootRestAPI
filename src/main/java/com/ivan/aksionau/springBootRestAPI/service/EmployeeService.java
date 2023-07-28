@@ -3,19 +3,16 @@ package com.ivan.aksionau.springBootRestAPI.service;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 
 import java.util.List;
-import java.util.Map;
 
 public interface EmployeeService {
 
     List<Employee> getEmployeesList();
 
-    List<Employee> getEmployeesListByKeys(Map<String, String> queryParameters);
-
-    Employee getEmployeeById(int id);
+    Employee getEmployeeById(Long id);
 
     Employee addEmployee(Employee employee);
 
-    List<Employee> deleteEmployee(int id);
+    Employee updateEmployee(Long id, Employee employee);
 
-    Employee updateEmployee(int id, Employee employee);
+    void deleteEmployee(Long id);
 }
