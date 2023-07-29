@@ -33,7 +33,7 @@ public class DataInitializer implements CommandLineRunner {
                 .build());
 
         employeeRepository.save(Employee.builder()
-                .email("karthik@test.com")
+                .email("Jon@test.com")
                 .name("John Doe")
                 .phone(23423423)
                 .address(Address.builder()

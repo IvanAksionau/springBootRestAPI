@@ -66,8 +66,8 @@ public class MockMvcSpringBootTest {
         // Arrange
         var employee = Employee.builder()
                 .id(1L)
-                .email("karthik@test.com")
-                .name("Karthik")
+                .email("Jon@test.com")
+                .name("Jon")
                 .phone(23423423)
                 .address(Address.builder().city("Auckland").country("NZ").street("12 Street").build())
                 .build();
@@ -91,8 +91,8 @@ public class MockMvcSpringBootTest {
         // Arrange
         var employee = Employee.builder()
                 .id(1L)
-                .email("karthik@test.com")
-                .name("Karthik")
+                .email("Jon@test.com")
+                .name("Jon")
                 .phone(23423423)
                 .address(Address.builder().city("Auckland").country("NZ").street("12 Street").build())
                 .build();
@@ -102,7 +102,7 @@ public class MockMvcSpringBootTest {
 
         // Assertion
         this.mockMvc.perform(get("/employee/1"))
-                .andExpect(jsonPath("name").value("Karthik"))
+                .andExpect(jsonPath("name").value("Jon"))
                 .andExpect(status().isOk());
     }
 
