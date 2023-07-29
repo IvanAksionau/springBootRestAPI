@@ -10,8 +10,8 @@
 * Access APP on http://localhost:8080/
 
 ### Tests start
-* Run command ```mvn verify``` and it will start cucumber tests and generate cucumber test report.
-* In order to run tests based on MySQL storage - add env variable ```spring.profiles.active=local``` .
+* Run command ```mvn verify``` and it will start cucumber tests based on H2 embedded storage and generate cucumber test report.
+* In order to run tests based on MySQL storage - add env variable ```spring.profiles.active=sql``` .
 
 ### Allure report installation:
 * https://github.com/ScoopInstaller/Install#for-admin ('.\install.ps1 -RunAsAdmin' in my case works)
