@@ -7,7 +7,9 @@
 ### APP start
 - To start APP based on embedded h2 database storage run command ```mvn spring-boot:run```
 - To start APP based on MySQL storage run command ```mvn spring-boot:run -D"spring-boot.run.profiles=local"```
-* Access APP on http://localhost:8080/
+- Application will automatically create database and tables on start and populate it with test data from data.sql and schema.sql files.
+- Access APP on http://localhost:8080/
+
 
 ### Tests start
 * Run command ```mvn verify``` and it will start cucumber tests based on H2 embedded storage and generate cucumber test report.
