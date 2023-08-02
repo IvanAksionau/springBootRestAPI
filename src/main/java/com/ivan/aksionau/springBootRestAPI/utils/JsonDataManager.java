@@ -18,6 +18,9 @@ import java.util.List;
 @Component
 public class JsonDataManager {
 
+    @Value("${JAVA_HOME}")
+    private String javaHomeVariable;
+
     @Value("${employee.list.file.path}")
     private String employeeListFilePath;
 

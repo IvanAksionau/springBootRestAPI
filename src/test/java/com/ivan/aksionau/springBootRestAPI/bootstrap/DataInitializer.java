@@ -4,11 +4,15 @@ import com.ivan.aksionau.springBootRestAPI.model.Address;
 import com.ivan.aksionau.springBootRestAPI.model.Employee;
 import com.ivan.aksionau.springBootRestAPI.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
+
+    @Value("${JAVA_HOME}")
+    private String javaHomeVariable;
 
     @Autowired
     private EmployeeRepository employeeRepository;
