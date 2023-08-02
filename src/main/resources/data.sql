@@ -6,8 +6,8 @@ VALUES
     ('789 Pine Road', 'Chicago', 'USA');
 
 -- Insert data into the employee table
-INSERT INTO employee (name, address_id, email, phone)
+INSERT INTO employee (name, email, phone)
 VALUES
-    ('John Doe', 1, 'john.doe@example.com', 123456789),
-    ('Jane Smith', 2, 'jane.smith@example.com', 987654321),
-    ('Michael Johnson', 3, 'michael.johnson@example.com', 555123456);
+    ('John Doe', 'john.doe@example.com', 123456789),
+    ('Jane Smith', 'jane.smith@example.com', 987654321),
+    ('Michael Johnson', 'michael.johnson@example.com', 555123456);

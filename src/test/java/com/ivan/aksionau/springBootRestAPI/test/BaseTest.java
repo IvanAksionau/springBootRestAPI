@@ -28,7 +28,7 @@ import java.util.function.Supplier;
 @Slf4j
 @Import(BaseConfiguration.class)
 //@ActiveProfiles("sql")
-@ComponentScan(basePackages = {"com/ivan/aksionau/bootstrap"})
+//@ComponentScan(basePackages = {"com/ivan/aksionau/bootstrap"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = BaseTest.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BaseTest {

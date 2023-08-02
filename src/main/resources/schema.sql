@@ -1,4 +1,6 @@
--- Create the address table
+--use employee_db;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS address;
 CREATE TABLE IF NOT EXISTS address (
     id BIGINT NOT NULL AUTO_INCREMENT,
     street VARCHAR(255),
@@ -7,7 +9,6 @@ CREATE TABLE IF NOT EXISTS address (
     PRIMARY KEY (id)
 );
 
--- Create the employee table
 CREATE TABLE IF NOT EXISTS employee (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255),
